@@ -4,8 +4,10 @@
 namespace _4Gewinnt
 {
     class Program
-    {
-
+    {   //y-Achse
+        public static int y = 6;
+        //x-Achse
+        public static int x = 7;
         struct Gamefield
         {
             // Das eigentliche Spielfeld
@@ -26,11 +28,12 @@ namespace _4Gewinnt
             Gamefields.GameOver = false;
 
             // 0 = frei, 1 = Spieler 1, 2 = Spieler 2
-            Gamefields.Field = new int[6, 7];
+            Gamefields.Field = new int[y, x];
 
-            for (int i = 0; i < 6; i++)
+
+            for (int i = 0; i < y; i++)
             {
-                for (int j = 0; j < 7; j++)
+                for (int j = 0; j < x; j++)
                 {
                     Gamefields.Field[i, j] = 0;
                 } // for End
@@ -121,9 +124,9 @@ namespace _4Gewinnt
             else
                 Console.WriteLine("Spieler 2 ist an der Reihe!\n");
 
-            for (int i = 0; i < 6; i++)
+            for (int i = 0; i < y; i++)
             {
-                for (int j = 0; j < 7; j++)
+                for (int j = 0; j < x; j++)
                 {
                     Console.Write(Gamefield.Field[i, j]);
                 } // for End
@@ -140,7 +143,7 @@ namespace _4Gewinnt
             int row = 0;
 
             // Zeile ermitteln
-            for (int i = 0; i < 6; i++)
+            for (int i = 0; i < y; i++)
             {
                 if (Gamefield.Field[i, gap] != 0)
                 {
@@ -158,7 +161,7 @@ namespace _4Gewinnt
             } // for End
 
             // Gewinn in einer Zeile?
-            for (int i = e + 1; i < e + 4 && i < 7; i++)
+            for (int i = e + 1; i < e + 4 && i < x; i++)
             {
                 if (Gamefield.Field[row, i] != Gamefield.Field[row, gap])
                 {
@@ -172,7 +175,7 @@ namespace _4Gewinnt
             } // for End
 
             // Gewinn in einer Spalte?
-            for (int i = 1; i < 5 && i + row < 6; i++)
+            for (int i = 1; i < 5 && i + row < y; i++)
             {
                 if (Gamefield.Field[i + row, gap] != Gamefield.Field[row, gap])
                 {
@@ -200,7 +203,7 @@ namespace _4Gewinnt
                 } // else End
             } // for End            
 
-            for (int i = 1; i < 5 && gap + i < 7 && row + i < 6; i++)
+            for (int i = 1; i < 5 && gap + i < x && row + i < y; i++)
             {
                 if (Gamefield.Field[row + i, gap + i] == Gamefield.Field[row, gap])
                 {
@@ -220,7 +223,7 @@ namespace _4Gewinnt
 
             diagonal = 1;
 
-            for (int i = 1; i < 5 && gap - i > 0 && row + i < 6; i++)
+            for (int i = 1; i < 5 && gap - i > 0 && row + i < y; i++)
             {
                 if (Gamefield.Field[row + i, gap - i] == Gamefield.Field[row, gap])
                 {
@@ -232,7 +235,7 @@ namespace _4Gewinnt
                 } // else End
             } // for End            
 
-            for (int i = 1; i < 5 && gap + i < 7 && row - i > 0; i++)
+            for (int i = 1; i < 5 && gap + i < x && row - i > 0; i++)
             {
                 if (Gamefield.Field[row - i, gap + i] == Gamefield.Field[row, gap])
                 {
